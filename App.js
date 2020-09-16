@@ -6,11 +6,7 @@ import AppText from "./app/components/AppText";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <AppButton title="Button" onPress={() => console.log("Tapped")} />
-    </View>
-  );
+  return <WelcomeScreen />;
 }
 
 const styles = StyleSheet.create({
