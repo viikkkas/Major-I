@@ -1,19 +1,22 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import AppButton from "./app/components/AppButton";
-import AppText from "./app/components/AppText";
+import { View } from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
+import Card from "./app/components/Card";
 
-export default function App() {
-  return <WelcomeScreen />;
+export default function App(props) {
+  return (
+    <View
+      style={{
+        backgroundColor: "#f8f4f4",
+        padding: 10,
+        paddingTop: 80,
+      }}
+    >
+      <Card
+        title="Red jacket for sale"
+        subTitle="Rs 100"
+        image={require("./app/assets/jacket.jpg")}
+      />
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
