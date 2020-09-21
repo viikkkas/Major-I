@@ -7,7 +7,7 @@ import Screen from "./app/components/Screen";
 export default function App(props) {
   return (
     <Screen>
-      <Icon name="email" size={50} backgroundColor="red" iconColor="white" />
+      <Icon name="email" />
     </Screen>
   );
 }
