@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
+import { Formik } from "formik";
 
 import Screen from "../components/Screen";
 import AppText from "../components/AppText";
@@ -9,9 +10,6 @@ import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
 
 function LoginScreen(props) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
   return (
     <Screen>
       <View style={styles.headerContainer}>
@@ -19,26 +17,32 @@ function LoginScreen(props) {
         <ListItemSeperator />
       </View>
       <View style={styles.container}>
-        <AppTextInput
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="email"
-          placeholder="Email"
-          keyboardType="email-address"
-          onChangeText={(text) => setEmail(text)}
-        />
-        <AppTextInput
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="lock"
-          placeholder="Password"
-          secureTextEntry={true}
-          onChangeText={(text) => setPassword(text)}
-        />
-        <AppButton
-          title="Submit"
-          onPress={() => console.log(email, password)}
-        />
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          onSubmit={(values) => console.log(values)}
+        >
+          {({ handleChange, handleSubmit }) => (
+            <>
+              <AppTextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="email"
+                placeholder="Email"
+                keyboardType="email-address"
+                onChangeText={handleChange("email")}
+              />
+              <AppTextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="lock"
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={handleChange("password")}
+              />
+              <AppButton title="Submit" onPress={handleSubmit} />
+            </>
+          )}
+        </Formik>
       </View>
     </Screen>
   );
