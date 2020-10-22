@@ -10,6 +10,7 @@ import ListItemSeperator from "../components/ListItemSeperator";
 import AppButton from "../components/AppButton";
 import AppFormField from "../components/AppFormField";
 import SubmitButton from "../components/SubmitButton";
+import AppForm from "../components/AppForm";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -24,33 +25,29 @@ function LoginScreen(props) {
         <ListItemSeperator />
       </View>
       <View style={styles.container}>
-        <Formik
+        <AppForm
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
-          {() => (
-            <>
-              <AppFormField
-                name="email"
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="email"
-                placeholder="Email"
-                keyboardType="email-address"
-              />
-              <AppFormField
-                name="password"
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="lock"
-                placeholder="Password"
-                secureTextEntry={true}
-              />
-              <SubmitButton title="Login" />
-            </>
-          )}
-        </Formik>
+          <AppFormField
+            name="email"
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="email"
+            placeholder="Email"
+            keyboardType="email-address"
+          />
+          <AppFormField
+            name="password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="lock"
+            placeholder="Password"
+            secureTextEntry={true}
+          />
+          <SubmitButton title="Login" />
+        </AppForm>
       </View>
     </Screen>
   );
