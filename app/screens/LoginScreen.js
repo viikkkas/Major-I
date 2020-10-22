@@ -9,6 +9,7 @@ import colors from "../config/colors";
 import ListItemSeperator from "../components/ListItemSeperator";
 import AppButton from "../components/AppButton";
 import AppFormField from "../components/AppFormField";
+import SubmitButton from "../components/SubmitButton";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -28,13 +29,7 @@ function LoginScreen(props) {
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
-          {({
-            handleChange,
-            handleSubmit,
-            errors,
-            setFieldTouched,
-            touched,
-          }) => (
+          {() => (
             <>
               <AppFormField
                 name="email"
@@ -52,8 +47,7 @@ function LoginScreen(props) {
                 placeholder="Password"
                 secureTextEntry={true}
               />
-
-              <AppButton title="Submit" onPress={handleSubmit} />
+              <SubmitButton title="Login" />
             </>
           )}
         </Formik>
