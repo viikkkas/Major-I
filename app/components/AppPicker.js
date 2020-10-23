@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import {
-  Button,
-  Modal,
-  Platform,
-  StyleSheet,
-  TextInput,
-  TouchableWithoutFeedback,
   View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Modal,
+  Button,
+  FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import Screen from "./Screen";
-import colors from "../config/colors";
 import AppText from "./AppText";
-import { FlatList } from "react-native-gesture-handler";
+import Screen from "./Screen";
+import defaultStyles from "../config/styles";
 import PickerItem from "./PickerItem";
 
 function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
@@ -27,17 +25,20 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
             <MaterialCommunityIcons
               name={icon}
               size={20}
-              color={colors.medium}
+              color={defaultStyles.colors.medium}
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
+
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
-            color={colors.medium}
+            color={defaultStyles.colors.medium}
           />
         </View>
       </TouchableWithoutFeedback>
@@ -65,7 +66,7 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
+    backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
     width: "100%",
@@ -75,10 +76,9 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
-  textInput: {
-    color: colors.dark,
-    fontSize: 18,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+  placeholder: {
+    color: defaultStyles.colors.medium,
+    flex: 1,
   },
   text: {
     flex: 1,

@@ -14,8 +14,8 @@ const listings = [
   },
   {
     id: 2,
-    title: "Couch in perfect condition",
-    price: 2000,
+    title: "Couch in great condition",
+    price: 1000,
     image: require("../assets/couch.jpg"),
   },
 ];
@@ -29,7 +29,7 @@ function ListingsScreen(props) {
         renderItem={({ item }) => (
           <Card
             title={item.title}
-            subTitle={"Rs" + item.price}
+            subTitle={"$" + item.price}
             image={item.image}
           />
         )}
