@@ -3,8 +3,8 @@ import { StyleSheet, Image, View } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
-import AppText from "../components/AppText";
-import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import { Form, FormField, SubmitButton } from "../components/forms";
+import AppText from "../components/Text";
 import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
@@ -16,14 +16,14 @@ function LoginScreen(props) {
   return (
     <Screen style={styles.container}>
       <View style={styles.logo}>
-        <AppText style={styles.logoText}>LOGIN</AppText>
+        <AppText style={styles.logoText}>Login</AppText>
       </View>
-      <AppForm
+      <Form
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="email"
@@ -32,7 +32,7 @@ function LoginScreen(props) {
           placeholder="Email"
           textContentType="emailAddress"
         />
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="lock"
@@ -42,7 +42,7 @@ function LoginScreen(props) {
           textContentType="password"
         />
         <SubmitButton title="Login" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   logoText: {
     color: colors.primary,
     fontSize: 30,
+    fontWeight: "bold",
   },
 });
 
