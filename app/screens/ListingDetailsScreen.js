@@ -8,14 +8,14 @@ import Text from "../components/Text";
 function ListingDetailsScreen(props) {
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+      <Image style={styles.image} source={require("../assets/airpods.jpg")} />
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>Red jacket for sale</Text>
-        <Text style={styles.price}>$100</Text>
+        <Text style={styles.title}>Airpods for sale</Text>
+        <Text style={styles.price}>Rs 1500</Text>
         <View style={styles.userContainer}>
           <ListItem
-            image={require("../assets/mosh.jpg")}
-            title="Mosh Hamedani"
+            image={require("../assets/vikas.jpg")}
+            title="Vikas Gupta"
             subTitle="5 Listings"
           />
         </View>
